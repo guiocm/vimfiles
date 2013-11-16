@@ -59,6 +59,10 @@ set pastetoggle=<F2>
 " map ; to : when in command mode
 nnoremap ; :
 
+" logical split behavior
+set splitbelow
+set splitright
+
 " window navigation with ctrl + (h j k l)
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -86,4 +90,8 @@ let g:solarized_termcolors=256
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 colorscheme solarized
+
+" nerdtree config
+map <leader>t - :NERDTreeToggle<CR>
+
 
