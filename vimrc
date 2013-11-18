@@ -75,6 +75,9 @@ nmap <silent> ,/ :nohlsearch<CR>
 " sudo save from inside vim
 cmap w!! w !sudo tee % >/dev/null
 
+" remove toolbar from gVim
+set guioptions-=mTr
+
 
 " supertab config
 let g:SuperTabDefaultCompletionType = "context"
@@ -84,9 +87,12 @@ let g:tagbar_usearrows = 1
 nnoremap <leader>l :TagbarToggle<CR>
 
 " solarized config
+" if running on a terminal, add 
+" export TERM="xterm-256color"
+" to your .bashrc
 set background=dark
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
+"let g:solarized_termtrans=1
+let g:solarized_termcolors=16
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 colorscheme solarized
