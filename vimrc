@@ -76,7 +76,21 @@ nmap <silent> ,/ :nohlsearch<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 " remove toolbar from gVim
-set guioptions-=mTr
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+
+" set gVim font on windows
+if has("gui_win32")
+    set guifont=Consolas:h12:cANSI
+endif
+
+" prevents screen from annoyingly flash when on terminal
+set t_vb=
+
+" set default file encoding to UTF-8
+setglobal fileencoding=utf-8
+
 
 
 " supertab config
@@ -87,15 +101,22 @@ let g:tagbar_usearrows = 1
 nnoremap <leader>l :TagbarToggle<CR>
 
 " solarized config
-" if running on a terminal, add 
+" if running on a terminal, add
 " export TERM="xterm-256color"
 " to your .bashrc
-set background=dark
-"let g:solarized_termtrans=1
-let g:solarized_termcolors=16
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-colorscheme solarized
+if has("gui_running") || $TERM == 'xterm-256color'
+    set background=dark
+    let g:solarized_termtrans=1
+    let g:solarized_termcolors=256
+    let g:solarized_contrast="normal"
+    let g:solarized_visibility="normal"
+    colorscheme solarized
+" if running on windows terminal, configure the
+" terminal app to use the solarized colorscheme
+elseif $TERM == 'cygwin'
+    let g:solarized_termcolors=16
+    colorscheme solarized
+endif
 
 " nerdtree config
 map <leader>t - :NERDTreeToggle<CR>
