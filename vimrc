@@ -91,6 +91,8 @@ set t_vb=
 " set default file encoding to UTF-8
 setglobal fileencoding=utf-8
 
+" show a visual indicator of the 80-column limit
+set colorcolumn=80
 
 
 " supertab config
@@ -107,7 +109,11 @@ nnoremap <leader>l :TagbarToggle<CR>
 if has("gui_running") || $TERM == 'xterm-256color'
     set background=dark
     let g:solarized_termtrans=1
-    let g:solarized_termcolors=256
+    if $SOLARIZED == 'true'
+        let g:solarized_termcolors=16
+    else
+        let g:solarized_termcolors=256
+    endif
     let g:solarized_contrast="normal"
     let g:solarized_visibility="normal"
     colorscheme solarized
