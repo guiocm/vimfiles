@@ -111,9 +111,16 @@ if has("gui_running") || $TERM == 'xterm-256color'
     let g:solarized_contrast="normal"
     let g:solarized_visibility="normal"
     colorscheme solarized
+elseif $SOLARIZED == 'yes'
+    set background=dark
+    let g:solarized_termtrans=1
+    let g:solarized_termcolors=16
+    let g:solarized_contrast="normal"
+    let g:solarized_visibility="normal"
+    colorscheme solarized
+elseif $TERM == 'cygwin'
 " if running on windows terminal, configure the
 " terminal app to use the solarized colorscheme
-elseif $TERM == 'cygwin'
     let g:solarized_termcolors=16
     colorscheme solarized
 endif
