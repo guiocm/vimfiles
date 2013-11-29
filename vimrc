@@ -94,6 +94,9 @@ setglobal fileencoding=utf-8
 " show a visual indicator of the 80-column limit
 set colorcolumn=80
 
+" highlight current line
+set cursorline
+
 
 " supertab config
 let g:SuperTabDefaultCompletionType = "context"
@@ -133,5 +136,9 @@ endif
 
 " nerdtree config
 map <leader>t - :NERDTreeToggle<CR>
+
+" syntastic config
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_check_on_open=1
 
 
