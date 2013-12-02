@@ -97,6 +97,12 @@ set colorcolumn=80
 " highlight current line
 set cursorline
 
+" buffer shortcuts
+nmap <leader>bn :bnext<CR>
+nmap <leader>bp :bprev<CR>
+nmap <leader>bl :buffers<CR>
+
+
 
 " supertab config
 let g:SuperTabDefaultCompletionType = "context"
