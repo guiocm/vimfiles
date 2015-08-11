@@ -101,20 +101,23 @@ set cursorline
 nmap <leader>bn :bnext<CR>
 nmap <leader>bp :bprev<CR>
 nmap <leader>bl :buffers<CR>
+nmap <leader>bd :bnext<CR>:bdelete #<CR>
+nmap <leader>bj :buffers<CR>:buffer
 
+" highlights all occurrences of term under cursor
+nmap <leader>h *N
 
+" enables mouse interaction
+set mouse=a
 
-" supertab config
-let g:SuperTabDefaultCompletionType = "context"
-
-" tagbar config
-let g:tagbar_usearrows = 1
-nnoremap <leader>l :TagbarToggle<CR>
+" allows project-specific vimrcs
+set exrc
 
 " solarized config
 " if running on a terminal, add
 " export TERM="xterm-256color"
 " to your .bashrc
+" this is really crappy, gotta fix it someday...
 if has("gui_running") || $TERM == 'xterm-256color'
     set background=dark
     let g:solarized_termtrans=1
@@ -139,12 +142,4 @@ elseif $TERM == 'cygwin'
     let g:solarized_termcolors=16
     colorscheme solarized
 endif
-
-" nerdtree config
-map <leader>t - :NERDTreeToggle<CR>
-
-" syntastic config
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_check_on_open=1
-
 
