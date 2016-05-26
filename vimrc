@@ -1,9 +1,17 @@
 
 set nocompatible
+filetype off
 
-" pathogen basics
-execute pathogen#infect()
-syntax on
+" Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'Valloric/YouCompleteMe'
+
+call vundle#end()
+
 filetype plugin indent on
 
 " my configs
@@ -113,11 +121,14 @@ set mouse=a
 " allows project-specific vimrcs
 set exrc
 
+" YouCompleteMe config
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 " solarized config
-" if running on a terminal, add
-" export TERM="xterm-256color"
-" to your .bashrc
-" this is really crappy, gotta fix it someday...
+" if running on a terminal, it should have TERM="xterm-256color"
+" also, if the terminal has solarized colorscheme installed, add
+" export SOLARIZED=true to your .bashrc
 if has("gui_running") || $TERM == 'xterm-256color'
     set background=dark
     let g:solarized_termtrans=1
@@ -126,13 +137,6 @@ if has("gui_running") || $TERM == 'xterm-256color'
     else
         let g:solarized_termcolors=256
     endif
-    let g:solarized_contrast="normal"
-    let g:solarized_visibility="normal"
-    colorscheme solarized
-elseif $SOLARIZED == 'yes'
-    set background=dark
-    let g:solarized_termtrans=1
-    let g:solarized_termcolors=16
     let g:solarized_contrast="normal"
     let g:solarized_visibility="normal"
     colorscheme solarized
