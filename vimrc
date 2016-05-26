@@ -9,12 +9,15 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
 
 filetype plugin indent on
 
 " my configs
+
+syntax enable
 
 " tabulation
 set softtabstop=4
@@ -110,7 +113,7 @@ nmap <leader>bn :bnext<CR>
 nmap <leader>bp :bprev<CR>
 nmap <leader>bl :buffers<CR>
 nmap <leader>bd :bnext<CR>:bdelete #<CR>
-nmap <leader>bj :buffers<CR>:buffer
+nmap <leader>bj :buffers<CR>:buffer 
 
 " highlights all occurrences of term under cursor
 nmap <leader>h *N
@@ -121,9 +124,24 @@ set mouse=a
 " allows project-specific vimrcs
 set exrc
 
+" switches folds with the space key
+nmap <space> za
+
+
 " YouCompleteMe config
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+set shortmess+=c " fixes annoying status message. needs Vim 7.4.314+
+
+" NERDTree config
+
+" opens NERDTree if no file is specified when launching vim
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+let NERDTreeIgnore = ['\.pyc$']
+
+nmap <leader>t :NERDTreeToggle<CR>
 
 " solarized config
 " if running on a terminal, it should have TERM="xterm-256color"
